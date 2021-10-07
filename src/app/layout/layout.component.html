@@ -1,0 +1,25 @@
+<p>  
+    products works!  
+  </p>  
+    
+  <table class="gridList">  
+    <tr>  
+      <th>Product Id</th>  
+      <th>Product Name</th>  
+      <th>Product Price</th>  
+      <th>Description</th>  
+    </tr>  
+    <tr *ngFor="let item of productList">  
+      <td>{{item.productId}}</td>  
+      <td>{{item.productName }}</td>  
+      <td>{{item.productPrice}}</td>  
+      <td>{{item.productDesc}}</td>  
+    </tr>  
+  </table>  
+  <form>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" [(ngModel)]="forms.fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" [(ngModel)]="forms.lname" value="Doe"><br><br>
+    <button type="button" (click)="saveForms()">Save</button>
+  </form> 
