@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';  
-import { Product } from './Product' ;  
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
+import { Product } from './Product' ;
+
   
   
 @Injectable({  
   providedIn: 'root'  
 })  
-export class ProductService {  
+export class ProductService { 
+  private bacnet = "http://localhost/api/api.php";
+  private saveSubject = new Subject<any>();
   productList: Array<Product> = ([  
     { productId: 1, productName: 'Mobile', productPrice: 12000, productDesc: 'New Mobile' },  
     { productId: 2, productName: 'Computer', productPrice: 30000, productDesc: 'New Computer' },  
@@ -13,8 +18,16 @@ export class ProductService {
     { productId: 4, productName: 'HDD', productPrice: 1000, productDesc: 'New HDD' }  
   
   ])  
-  constructor() { }  
+  constructor( private http: HttpClient) { }  
   get() {  
     return this.productList;  
   }  
+  saveBacnet(forms: object): Observable<any> {
+    console.log(forms);
+    return this.http.post(`${this.bacnet}`, forms);
+  }
+  setSaveBacnet(data: any) {
+    this.saveSubject.next(data);
+  }
+
 }  

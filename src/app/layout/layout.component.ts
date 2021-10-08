@@ -18,8 +18,15 @@ export class LayoutComponent implements OnInit {
     this.title.setTitle("Product List");  
     this.productList = this.productService.get();  
   }
-  saveForms(){
-console.log(this.forms);
+  saveBacnet(){
+    this.forms.fname = this.forms.fname
+    this.forms.lname = this.forms.lname
+    console.log(this.forms);
+    this.productService.saveBacnet(this.forms)
+    .subscribe(data => {
+    console.log(data);
+    
+    })  
   }
 
 }
