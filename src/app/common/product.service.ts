@@ -23,11 +23,11 @@ export class ProductService {
     return this.productList;  
   }  
   saveBacnet(forms: object): Observable<any> {
-    console.log(forms);
+    console.log("inside service - saveBacnet:-" + JSON.stringify(forms));
     return this.http.post(`${this.bacnet}`, forms);
   }
-  setSaveBacnet(data: any) {
-    this.saveSubject.next(data);
-  }
+  // setSaveBacnet(data: any) {
+  //   this.saveSubject.next(data);
+  // }
 
 }  

@@ -19,9 +19,8 @@ export class LayoutComponent implements OnInit {
     this.productList = this.productService.get();  
   }
   saveBacnet(){
-    this.forms.fname = this.forms.fname
-    this.forms.lname = this.forms.lname
-    console.log(this.forms);
+  
+    console.log("savingBacnet with data:-" +this.forms);
     this.productService.saveBacnet(this.forms)
     .subscribe(data => {
     console.log(data);
