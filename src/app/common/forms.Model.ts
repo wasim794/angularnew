@@ -7,5 +7,5 @@ export class forms{
     fname: string;  
     lname: string;  
   
-  
+
   }

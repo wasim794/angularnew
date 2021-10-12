@@ -11,12 +11,15 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 export class LayoutComponent implements OnInit {
 
   productList: any; 
-  forms = {} as forms;   
+  forms = {} as forms;
+  Getforms:any;   
   constructor(private productService: ProductService, private title: Title) { }
 
   ngOnInit() {
+   // this.getBacnet();
     this.title.setTitle("Product List");  
     this.productList = this.productService.get();  
+    
   }
   saveBacnet(){
   
@@ -26,6 +29,13 @@ export class LayoutComponent implements OnInit {
     console.log(data);
     
     })  
+  }
+  getBacnet() {
+    this.productService.getsaveBacnet().subscribe(data => {
+      this.Getforms = data;
+      console.log('hello get', data);
+    //  console.log('getBacnet data' + JSON.stringify(data));
+    });
   }
 
 }

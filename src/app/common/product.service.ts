@@ -10,6 +10,7 @@ import { Product } from './Product' ;
 })  
 export class ProductService { 
   private bacnet = "http://localhost/api/api.php";
+  private getbacnet = "http://localhost/api/getsavedata.php";
   private saveSubject = new Subject<any>();
   productList: Array<Product> = ([  
     { productId: 1, productName: 'Mobile', productPrice: 12000, productDesc: 'New Mobile' },  
@@ -25,6 +26,9 @@ export class ProductService {
   saveBacnet(forms: object): Observable<any> {
     console.log("inside service - saveBacnet:-" + JSON.stringify(forms));
     return this.http.post(`${this.bacnet}`, forms);
+  }
+  getsaveBacnet(): Observable<any> {
+    return this.http.get(`${this.getbacnet}`);
   }
   // setSaveBacnet(data: any) {
   //   this.saveSubject.next(data);
