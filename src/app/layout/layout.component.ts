@@ -12,11 +12,14 @@ export class LayoutComponent implements OnInit {
 
   productList: any; 
   forms = {} as forms;
-  Getforms:any;   
+  Getforms:any;
+  updates:any;   
   constructor(private productService: ProductService, private title: Title) { }
 
   ngOnInit() {
-   // this.getBacnet();
+   this.getBacnet();
+   this.upDates(this.updates);
+  //  this.upDates(this.updates);
     this.title.setTitle("Product List");  
     this.productList = this.productService.get();  
     
@@ -36,6 +39,18 @@ export class LayoutComponent implements OnInit {
       console.log('hello get', data);
     //  console.log('getBacnet data' + JSON.stringify(data));
     });
+  }
+
+  upDates(id: any){
+  this.updates=id;
+  console.log(id);
+   
+   this.productService.getsaveBacnetId(this.updates).subscribe(data => {
+     this.updates = data;
+    console.log('hello getid', this.updates);
+  //  console.log('getBacnet data' + JSON.stringify(data));
+  });
+
   }
 
 }
