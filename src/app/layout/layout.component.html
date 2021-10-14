@@ -18,8 +18,9 @@
   </table>  
   <form>
     <label for="fname">First name:</label><br>
-    <input type="text" id="fname" [(ngModel)]="forms.fname" name="fname" value="John"><br>
+    <input type="text" id="fname" [(ngModel)]="forms.fname" name="fname" ><br>
     <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" [(ngModel)]="forms.lname" value="Doe"><br><br>
-    <button type="button" (click)="saveBacnet()">Save</button>
+    <input type="text" id="lname" name="lname" [(ngModel)]="forms.lname" ><br><br>
+    <button type="button"  (click)="saveBacnet()">Save</button>
+    <button type="button" (click)="upDatesIdforms(forms.id)">Update</button>
   </form> 

@@ -12,6 +12,7 @@ export class ProductService {
   private bacnet = "http://localhost/api/api.php";
   private getbacnet = "http://localhost/api/getsavedata.php";
   private getbacnetId = "http://localhost/api/getsavedataId.php";
+  private getbacnetIdupdate="http://localhost/api/updateGetdata.php";
   private saveSubject = new Subject<any>();
   productList: Array<Product> = ([  
     { productId: 1, productName: 'Mobile', productPrice: 12000, productDesc: 'New Mobile' },  
@@ -31,9 +32,15 @@ export class ProductService {
   getsaveBacnet(): Observable<any> {
     return this.http.get(`${this.getbacnet}`);
   }
-  getsaveBacnetId(id: any): Observable<any> {
+  getsaveBacnetId(id: any ): Observable<any> {
     console.log(id);
     return this.http.get(`${this.getbacnetId}?id=${id}`, id);
+    //console.log(id);
+  }
+
+  getsaveBacnetIdupdate(id: any, forms:object ): Observable<any> {
+    console.log(id, forms);
+    return this.http.put(`${this.getbacnetIdupdate}?id=${id}`, forms);
     //console.log(id);
   }
   // setSaveBacnet(data: any) {

@@ -25,6 +25,7 @@ export class LayoutComponent implements OnInit {
     
   }
   saveBacnet(){
+    
   
     console.log("savingBacnet with data:-" +this.forms);
     this.productService.saveBacnet(this.forms)
@@ -46,11 +47,22 @@ export class LayoutComponent implements OnInit {
   console.log(id);
    
    this.productService.getsaveBacnetId(this.updates).subscribe(data => {
-     this.updates = data;
-    console.log('hello getid', this.updates);
+     this.forms = data[0];
+    console.log('response data'+ JSON.stringify(this.forms));
   //  console.log('getBacnet data' + JSON.stringify(data));
   });
 
   }
+
+  upDatesIdforms(id: any){
+    this.updates=id;
+    console.log(id, this.forms);
+     
+     this.productService.getsaveBacnetIdupdate(id, this.forms).subscribe(data => {
+      console.log('response data'+ JSON.stringify(this.forms));
+    //  console.log('getBacnet data' + JSON.stringify(data));
+    });
+  
+    }
 
 }
